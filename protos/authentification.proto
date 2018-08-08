@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package grpc.auth;
+
+message Request {
+  string username = 3;
+}
+
+message Response {
+  bool isSuccess  = 2;
+}
+
+service AuthService {
+  rpc SignIn(Request) returns (Response);
+}
