@@ -13,16 +13,20 @@ class Auth(src.authentification_pb2_grpc.AuthServiceServicer):
 
     def SignIn(self, request, context):
 
+        print("SignIn incoming value: " + request.username)
         res = False
 
-        if request == "test" :
+        if request.username == "test" :
             res = True
 
-        return src.authentification_pb2.Response(res)
+        print("SignIn return value: " + str(res))
+
+        # isSuccess - field in .proto (message Response), must be same
+        return src.authentification_pb2.Response(isSuccess = res)
 
 
 def serve():
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=2))
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     src.authentification_pb2_grpc.add_AuthServiceServicer_to_server(Auth(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
@@ -34,10 +38,6 @@ def serve():
         server.stop(0)
 
 
-def main():
-    serve()
-
-
 if __name__ == "__main__":
-    main()
+    serve()
 

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='authentification.proto',
   package='grpc.auth',
   syntax='proto3',
-  serialized_pb=_b('\n\x16\x61uthentification.proto\x12\tgrpc.auth\"\x1b\n\x07Request\x12\x10\n\x08username\x18\x03 \x01(\t\"\x1d\n\x08Response\x12\x11\n\tisSuccess\x18\x02 \x01(\x08\x32@\n\x0b\x41uthService\x12\x31\n\x06SignIn\x12\x12.grpc.auth.Request\x1a\x13.grpc.auth.Responseb\x06proto3')
+  serialized_pb=_b('\n\x16\x61uthentification.proto\x12\tgrpc.auth\"\x1b\n\x07Request\x12\x10\n\x08username\x18\x01 \x01(\t\"\x1d\n\x08Response\x12\x11\n\tisSuccess\x18\x01 \x01(\x08\x32@\n\x0b\x41uthService\x12\x31\n\x06SignIn\x12\x12.grpc.auth.Request\x1a\x13.grpc.auth.Responseb\x06proto3')
 )
 
 
@@ -34,7 +34,7 @@ _REQUEST = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='username', full_name='grpc.auth.Request.username', index=0,
-      number=3, type=9, cpp_type=9, label=1,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -65,7 +65,7 @@ _RESPONSE = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='isSuccess', full_name='grpc.auth.Response.isSuccess', index=0,
-      number=2, type=8, cpp_type=7, label=1,
+      number=1, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,

@@ -1,6 +1,10 @@
-import sys
+from __future__ import print_function
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import pyqtSlot
+
+import grpc
+import src.authentification_pb2
+import src.authentification_pb2_grpc
 
 
 class App(QWidget):
@@ -44,6 +48,17 @@ class App(QWidget):
 
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = App()
-    sys.exit(app.exec_())
+    # app = QApplication(sys.argv)
+    # ex = App()
+    # sys.exit(app.exec_())
+
+    userName = "test"
+
+    channel = grpc.insecure_channel('localhost:50051')
+
+    stub = src.authentification_pb2_grpc.AuthServiceStub(channel)
+
+    #username - field in .proto (message Request), must be same
+    response = stub.SignIn(src.authentification_pb2.Request(username = userName))
+
+    print("Client received: " + str(response.isSuccess))
